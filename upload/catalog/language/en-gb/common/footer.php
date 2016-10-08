@@ -1,0 +1,33 @@
+<?php
+// Text
+$_['text_information']  = 'Information';
+$_['text_service']      = 'Our Service';
+$_['text_extra']        = 'Extra';
+$_['text_contact']      = 'Contact Us';
+$_['text_about_us']      = 'About Us';
+$_['text_return']       = 'Returns';
+$_['text_sitemap']      = 'Site Map';
+$_['text_manufacturer'] = 'Brands';
+$_['text_download']        = 'Download';
+$_['text_telephone']   = 'Phone:';
+$_['text_email']   = 'Email:';
+$_['text_address']   = 'Address:';
+$_['text_fax']   = 'Fax:';
+$_['text_website']   = 'Website: www.plazathemes.com';
+$_['text_follow']   = 'follow us';
+$_['text_follow_title']   = 'Follow us';
+$_['text_business_hours']   = 'Openning time';
+$_['text_business_hours1']   = '<span>Monday - Friday</span>8am - 5pm';
+$_['text_business_hours2']   = '<span>Saturday</span>9.00 - 21.00';
+$_['text_business_hours3']   = '<span>Sun</span>10.00 - 21.00';
+$_['text_business_hours4']   = 'We work all the holidays';
+$_['text_facebook']   = 'our facebook';
+$_['text_introduction']   = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas...';
+$_['text_voucher']      = 'Gift Certificates';
+$_['text_affiliate']    = 'Affiliates';
+$_['text_special']      = 'Specials';
+$_['text_account']      = 'My Account';
+$_['text_order']        = 'Order History';
+$_['text_wishlist']     = 'Wish List';
+$_['text_newsletter']   = 'Newsletter';
+$_['text_powered']      = 'Copyright © <a href="http://plazathemes.com/">plazathemes.com</a>. All rights reserved.';

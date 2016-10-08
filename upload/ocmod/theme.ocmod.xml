@@ -1,0 +1,423 @@
+<modification>
+    <name>Themes</name>
+	<version>1.0</version>
+	<link>http://www.plazathemes.com/</link>
+	<author>Plaza Theme</author>
+	<code>themes</code>
+	<file path="admin/model/localisation/language.php">
+		<operation>
+			<search><![CDATA[foreach ($query->rows as $recurring) {]]></search>
+			<add position="before"><![CDATA[
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cmsblock_description WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+			foreach ($query->rows as $cmsblock_description) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "cmsblock_description SET cmsblock_des_id = '" . (int)$cmsblock_description['cmsblock_des_id'] . "', language_id = '" . (int)$language_id . "', cmsblock_id = '" . (int)$cmsblock_description['cmsblock_id'] . "', title = '" . $this->db->escape($cmsblock_description['title']) . "', description = '" . $this->db->escape($cmsblock_description['description']) . "'");
+			}
+			$this->cache->delete('cmsblock_description');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$this->db->query("DELETE FROM " . DB_PREFIX . "option_description WHERE language_id = '" . (int)$language_id . "'");]]></search>
+			<add position="after"><![CDATA[
+			$this->db->query("DELETE FROM " . DB_PREFIX . "cmsblock_description WHERE language_id = '" . (int)$language_id . "'");
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[foreach ($query->rows as $recurring) {]]></search>
+			<add position="before"><![CDATA[
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "cmsblock_description WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+			foreach ($query->rows as $cmsblock_description) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "cmsblock_description SET cmsblock_des_id = '" . (int)$cmsblock_description['cmsblock_des_id'] . "', language_id = '" . (int)$language_id . "', cmsblock_id = '" . (int)$cmsblock_description['cmsblock_id'] . "', title = '" . $this->db->escape($cmsblock_description['title']) . "', description = '" . $this->db->escape($cmsblock_description['description']) . "'");
+			}
+			$this->cache->delete('cmsblock_description');
+
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "article_description WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+			foreach ($query->rows as $article_description) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "article_description SET article_id = '" . (int)$article_description['article_id'] . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($article_description['name']) . "', description = '" . $this->db->escape($article_description['description']) . "', intro_text = '" . $this->db->escape($article_description['intro_text']) . "', meta_title = '" . $this->db->escape($article_description['meta_title']) . "', meta_description = '" . $this->db->escape($article_description['meta_description']) . "', meta_keyword = '" . $this->db->escape($article_description['meta_keyword']) . "'");
+			}
+			$this->cache->delete('article_description');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$this->db->query("DELETE FROM " . DB_PREFIX . "option_description WHERE language_id = '" . (int)$language_id . "'");]]></search>
+			<add position="after"><![CDATA[
+			$this->db->query("DELETE FROM " . DB_PREFIX . "cmsblock_description WHERE language_id = '" . (int)$language_id . "'");
+			$this->db->query("DELETE FROM " . DB_PREFIX . "article_description WHERE language_id = '" . (int)$language_id . "'");
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/product/category.php">
+		<operation>
+			<search><![CDATA[$data['button_grid'] = $this->language->get('button_grid');]]></search>
+			<add position="after"><![CDATA[
+				$data['text_sale'] = $this->language->get('text_sale');
+				$data['text_new'] = $this->language->get('text_new');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$results = $this->model_catalog_product->getProducts($filter_data);]]></search>
+			<add position="after"><![CDATA[
+				$data['new_products'] = array();
+              $filter_new_data = array(
+               'sort'  => 'p.date_added',
+               'order' => 'DESC',
+               'start' => 0,
+               'limit' => 10
+              );
+            $new_results = $this->model_catalog_product->getProducts($filter_new_data);
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				$is_new = false;
+                if ($new_results) { 
+                    foreach($new_results as $new_r) {
+                        if($result['product_id'] == $new_r['product_id']) {
+                            $is_new = true;
+                        }
+                    }
+                }
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA['special'     => $special,]]></search>
+			<add position="after"><![CDATA[
+				'is_new'      => $is_new,
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/product/manufacturer.php">
+		<operation>
+			<search><![CDATA[$data['button_grid'] = $this->language->get('button_grid');]]></search>
+			<add position="after"><![CDATA[
+				$data['text_sale'] = $this->language->get('text_sale');
+				$data['text_new'] = $this->language->get('text_new');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$results = $this->model_catalog_product->getProducts($filter_data);]]></search>
+			<add position="after"><![CDATA[
+				$data['new_products'] = array();
+              $filter_new_data = array(
+               'sort'  => 'p.date_added',
+               'order' => 'DESC',
+               'start' => 0,
+               'limit' => 10
+              );
+            $new_results = $this->model_catalog_product->getProducts($filter_new_data);
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				$is_new = false;
+                if ($new_results) { 
+                    foreach($new_results as $new_r) {
+                        if($result['product_id'] == $new_r['product_id']) {
+                            $is_new = true;
+                        }
+                    }
+                }
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA['special'     => $special,]]></search>
+			<add position="after"><![CDATA[
+				'is_new'      => $is_new,
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/product/search.php">
+		<operation>
+			<search><![CDATA[$data['button_grid'] = $this->language->get('button_grid');]]></search>
+			<add position="after"><![CDATA[
+				$data['text_sale'] = $this->language->get('text_sale');
+				$data['text_new'] = $this->language->get('text_new');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$results = $this->model_catalog_product->getProducts($filter_data);]]></search>
+			<add position="after"><![CDATA[
+				$data['new_products'] = array();
+              $filter_new_data = array(
+               'sort'  => 'p.date_added',
+               'order' => 'DESC',
+               'start' => 0,
+               'limit' => 10
+              );
+            $new_results = $this->model_catalog_product->getProducts($filter_new_data);
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				$is_new = false;
+                if ($new_results) { 
+                    foreach($new_results as $new_r) {
+                        if($result['product_id'] == $new_r['product_id']) {
+                            $is_new = true;
+                        }
+                    }
+                }
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA['special'     => $special,]]></search>
+			<add position="after"><![CDATA[
+				'is_new'      => $is_new,
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/product/special.php">
+		<operation>
+			<search><![CDATA[$data['button_grid'] = $this->language->get('button_grid');]]></search>
+			<add position="after"><![CDATA[
+				$data['text_sale'] = $this->language->get('text_sale');
+				$data['text_new'] = $this->language->get('text_new');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$product_total = $this->model_catalog_product->getTotalProductSpecials();]]></search>
+			<add position="after"><![CDATA[
+				$data['new_products'] = array();
+              $filter_new_data = array(
+               'sort'  => 'p.date_added',
+               'order' => 'DESC',
+               'start' => 0,
+               'limit' => 10
+              );
+            $new_results = $this->model_catalog_product->getProducts($filter_new_data);
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				$is_new = false;
+                if ($new_results) { 
+                    foreach($new_results as $new_r) {
+                        if($result['product_id'] == $new_r['product_id']) {
+                            $is_new = true;
+                        }
+                    }
+                }
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA['special'     => $special,]]></search>
+			<add position="after"><![CDATA[
+				'is_new'      => $is_new,
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/product/product.php">
+		<operation>
+			<search><![CDATA[$data['text_related'] = $this->language->get('text_related');]]></search>
+			<add position="after"><![CDATA[
+				$data['shortdescription']  = utf8_substr(strip_tags(html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8')), 0, 150) . '...';
+				$data['text_related1'] = $this->language->get('text_related1');
+				$data['text_related2'] = $this->language->get('text_related2');
+				$data['entry_captcha'] = $this->language->get('entry_captcha');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[foreach ($discounts as $discount) {]]></search>
+			<add position="before"><![CDATA[
+				$data['new_products'] = array();
+              $filter_new_data = array(
+               'sort'  => 'p.date_added',
+               'order' => 'DESC',
+               'start' => 0,
+               'limit' => 10
+              );
+            $new_results = $this->model_catalog_product->getProducts($filter_new_data);
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				$is_new = false;
+                if ($new_results) { 
+                    foreach($new_results as $new_r) {
+                        if($result['product_id'] == $new_r['product_id']) {
+                            $is_new = true;
+                        }
+                    }
+                }
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$data['products'][] = array(]]></search>
+			<add position="after"><![CDATA[
+				'is_new'      => $is_new,
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/extension/module/carousel.php">
+		<operation>
+			<search><![CDATA[$data['banners'] = array();]]></search>
+			<add position="after"><![CDATA[
+				$data['heading_title'] = $this->language->get('heading_title');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$this->load->model('tool/image');]]></search>
+			<add position="after"><![CDATA[
+				$this->load->language('extension/module/carousel');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="admin/controller/design/layout.php">
+		<operation>
+			<search><![CDATA[$data['text_content_top'] = $this->language->get('text_content_top');]]></search>
+			<add position="after"><![CDATA[
+				$data['text_content_block'] = $this->language->get('text_content_block');
+				$data['text_content_block2'] = $this->language->get('text_content_block2');
+				$data['text_content_block3'] = $this->language->get('text_content_block3');
+				$data['text_content_block4'] = $this->language->get('text_content_block4');
+				$data['text_content_block5'] = $this->language->get('text_content_block5');
+				$data['text_content_block6'] = $this->language->get('text_content_block6');
+				$data['text_content_block7'] = $this->language->get('text_content_block7');
+				$data['text_content_block8'] = $this->language->get('text_content_block8');
+				$data['text_content_block9'] = $this->language->get('text_content_block9');
+				$data['text_content_block10'] = $this->language->get('text_content_block10');
+				$data['text_content_right'] = $this->language->get('text_content_right');
+				$data['text_content_left'] = $this->language->get('text_content_left');
+				$data['text_content_banner'] = $this->language->get('text_content_banner');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$this->response->setOutput($this->load->view('design/layout_form', $data));]]></search>
+			<add position="replace"><![CDATA[
+				$this->response->setOutput($this->load->view('design/layout_plaza_form.tpl', $data));
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/common/footer.php">
+		<operation>
+			<search><![CDATA[$data['text_newsletter'] = $this->language->get('text_newsletter');]]></search>
+			<add position="after"><![CDATA[
+				$data['text_address'] = $this->language->get('text_address');
+				$data['text_telephone'] = $this->language->get('text_telephone');
+				$data['text_email'] = $this->language->get('text_email');
+				$data['text_fax'] = $this->language->get('text_fax');
+				$data['text_website'] = $this->language->get('text_website');
+				$data['text_facebook'] = $this->language->get('text_facebook');
+				$data['text_follow_title'] = $this->language->get('text_follow_title');
+				$data['text_about_us'] = $this->language->get('text_about_us');
+				$data['text_introduction'] = $this->language->get('text_introduction');
+				$data['text_business_hours'] = $this->language->get('text_business_hours');
+				$data['text_business_hours1'] = $this->language->get('text_business_hours1');
+				$data['text_business_hours2'] = $this->language->get('text_business_hours2');
+				$data['text_business_hours3'] = $this->language->get('text_business_hours3');
+				$data['text_business_hours4'] = $this->language->get('text_business_hours4');
+				$data['address'] = $this->config->get('config_address');
+				$data['telephone'] = $this->config->get('config_telephone');
+				$data['email'] = $this->config->get('config_email');
+				$data['fax'] = $this->config->get('config_fax');
+				$data['open'] = $this->config->get('config_open');
+				$data['home'] = $this->url->link('common/home');
+				$data['content_block'] = $this->load->controller('common/content_block');
+				$data['content_block2'] = $this->load->controller('common/content_block2');
+				$data['content_block3'] = $this->load->controller('common/content_block3');
+				$data['content_block4'] = $this->load->controller('common/content_block4');
+				$data['content_block5'] = $this->load->controller('common/content_block5');
+				$data['content_block6'] = $this->load->controller('common/content_block6');
+				$data['content_block7'] = $this->load->controller('common/content_block7');
+				$data['content_block8'] = $this->load->controller('common/content_block8');
+				$data['content_block9'] = $this->load->controller('common/content_block9');
+				$data['content_block10'] = $this->load->controller('common/content_block10');
+				$data['content_right'] = $this->load->controller('common/content_right');
+				$data['content_left'] = $this->load->controller('common/content_left');
+				$data['content_banner'] = $this->load->controller('common/content_banner');
+			]]></add>
+		</operation>
+		
+	</file>
+	
+	<file path="catalog/controller/common/header.php">
+		
+		<operation>
+			<search><![CDATA[$data['text_all'] = $this->language->get('text_all');]]></search>
+			<add position="after"><![CDATA[
+				$data['text_msg'] = $this->language->get('text_msg');
+				$data['text_telephone'] = $this->language->get('text_telephone');
+				$data['content_block'] = $this->load->controller('common/content_block');
+				$data['content_block2'] = $this->load->controller('common/content_block2');
+				$data['content_block3'] = $this->load->controller('common/content_block3');
+				$data['content_block4'] = $this->load->controller('common/content_block4');
+				$data['content_block5'] = $this->load->controller('common/content_block5');
+				$data['content_block6'] = $this->load->controller('common/content_block6');
+				$data['content_block7'] = $this->load->controller('common/content_block7');
+				$data['content_block8'] = $this->load->controller('common/content_block8');
+				$data['content_block9'] = $this->load->controller('common/content_block9');
+				$data['content_block10'] = $this->load->controller('common/content_block10');
+				$data['content_right'] = $this->load->controller('common/content_right');
+				$data['content_left'] = $this->load->controller('common/content_left');
+				$data['content_banner'] = $this->load->controller('common/content_banner');
+			]]></add>
+		</operation>
+		
+	</file>
+	
+	<file path="catalog/controller/common/home.php">
+		
+		<operation>
+			<search><![CDATA[$data['content_bottom'] = $this->load->controller('common/content_bottom');]]></search>
+			<add position="after"><![CDATA[
+				$data['content_block'] = $this->load->controller('common/content_block');
+				$data['content_block2'] = $this->load->controller('common/content_block2');
+				$data['content_block3'] = $this->load->controller('common/content_block3');
+				$data['content_block4'] = $this->load->controller('common/content_block4');
+				$data['content_block5'] = $this->load->controller('common/content_block5');
+				$data['content_block6'] = $this->load->controller('common/content_block6');
+				$data['content_block7'] = $this->load->controller('common/content_block7');
+				$data['content_block8'] = $this->load->controller('common/content_block8');
+				$data['content_block9'] = $this->load->controller('common/content_block9');
+				$data['content_block10'] = $this->load->controller('common/content_block10');
+				$data['content_right'] = $this->load->controller('common/content_right');
+				$data['content_left'] = $this->load->controller('common/content_left');
+				$data['content_banner'] = $this->load->controller('common/content_banner');
+			]]></add>
+		</operation>
+		
+	</file>
+	
+	<file path="catalog/controller/common/cart.php">
+		
+		<operation>
+			<search><![CDATA[$data['text_cart'] = $this->language->get('text_cart');]]></search>
+			<add position="after"><![CDATA[
+				$data['text_items_title'] = $this->language->get('text_items_title');
+			]]></add>
+		</operation>
+		
+	</file>
+	
+	<file path="catalog/controller/checkout/cart.php">
+		
+		<operation>
+			<search><![CDATA[$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));]]></search>
+			<add position="before"><![CDATA[
+				$json['text_items_title'] = $this->language->get('text_items_title');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));]]></search>
+			<add position="before"><![CDATA[
+				$json['text_items_title'] = $this->language->get('text_items_title');
+			]]></add>
+		</operation>
+		
+	</file>
+	
+</modification>

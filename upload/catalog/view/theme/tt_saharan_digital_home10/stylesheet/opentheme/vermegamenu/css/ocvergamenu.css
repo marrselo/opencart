@@ -1,0 +1,351 @@
+/** ver megamenu **/
+.vermagemenu {
+	padding: 0;
+	font-weight:500;
+	position:relative;
+	margin-top:30px;
+}
+.vermagemenu h2{
+    background: #000;
+    padding: 0 0 0 45px;
+    height: 52px;
+    line-height: 52px;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+	font-weight:normal;
+	font-family: Nunito, Arial, Helvetica, sans-serif;
+}
+.vermagemenu h2:before {
+    content: "\f0c9";
+    color: #fff;
+    font-family: Fontawesome;
+	top:0;
+    left: 22px;
+    position: absolute;
+}
+.navleft-container{
+    position: absolute;
+    top: 52px;
+    font-size:14px;
+    width: 100%;
+    left: 0;
+    z-index: 100;
+}
+.common-home .navleft-container{display:inline-block;}
+.pt_vmegamenu{
+	margin:0px
+}
+.pt_vmegamenu div.pt_ver_menu.active{
+	background:none!important;
+}
+.pt_vmegamenu .parentMenu .parentMenu a span{
+	font-size:15px!important;
+}
+#pt_vmegamenu{
+	margin-bottom: 0;
+	padding-bottom:0;
+	padding-top:0;
+}
+.pt_vmegamenu .parentMenu a{
+    height: auto!important;
+    width: 100%!important;
+    padding: 16px 20px 17px 25px !important;
+    text-decoration: none!important;
+    font-size: 14px;
+    text-transform: uppercase;
+    background: #FAFAFA;
+    color: #666;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+.pt_ver_menu img{
+	position: absolute;
+	top: 14px;
+	left: 3px;
+}
+.pt_vmegamenu .parentMenu .fa{color:#fff; margin-right:10px;}
+.pt_vmegamenu div.more-wrap .parentMenu a.more-ver-menu,
+.pt_vmegamenu div.close-wrap .parentMenu a.close-ver-menu{
+	height:48px !important;
+	padding: 0 0 0 50px !important;
+	line-height: 48px;
+	border: 0;
+	position:relative;
+}
+.pt_vmegamenu div.more-wrap .parentMenu a.more-ver-menu span:before,
+.pt_vmegamenu div.close-wrap .parentMenu a.close-ver-menu span:before{
+    display: block;
+    width: 24px;
+    height: 24px;
+    content: "\f067";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 25%;
+    left: 30px;
+    font-size: 17px;
+    line-height: 24px;
+	
+}
+.pt_vmegamenu div.close-wrap .parentMenu a.close-ver-menu span:before{
+    content: "\f068";
+}
+#pt_vmegamenu .pt_ver_menu, #pt_vmegamenu .pt_ver_menu .parentMenu{
+	width:100%;
+	padding: 0 !important;
+}
+#pt_vmegamenu .pt_ver_menu.had-child .parentMenu a:after {
+    content: "\f105";
+    font-family: FontAwesome;
+    color: #c3c3c3;
+    display: inline-block;
+    font-size: 14px;
+    position: absolute;
+    right: 15px;
+}
+#pt_vmegamenu .pt_ver_menu.had-child .parentMenu a:hover:after{
+	color:#f34b6e;
+}
+#pt_vmegamenu .pt_ver_menu.over-menu{
+	display:none;
+}
+#pt_ver_menu_home{
+	display:none !important;
+}
+.pt_vmegamenu .pt_ver_menu .popup{
+    border:none;
+    padding: 0;
+    position: absolute;
+    left: 262px;
+    top: 0;
+    text-align: left;
+    z-index: 3000;
+    background-color: none !important;
+}
+.pt_vmegamenu div.column {
+    width: 170px;
+}
+.pt_vmegamenu .pt_ver_menu .popup .content-popup{
+    background: #fff;
+    float: left;
+    border-radius: 0;
+    -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
+}
+
+/** /ver megamenu **/
+.pt_vmegamenu {
+    font-size: 14px;
+    margin: 0 0 20px;
+    padding: 15px 0;
+    z-index: 1000;
+}
+.pt_vmegamenu div.pt_ver_menu {
+    padding: 0;
+    position: relative;
+    width: 195px;
+}
+.pt_vmegamenu div.popup {
+    padding: 10px;
+}
+.pt_vmegamenu #pt_ver_menu_link ul li a.act, 
+.pt_vmegamenu #pt_ver_menu_link ul li a:hover, 
+.pt_vmegamenu div.pt_ver_menu.act .parentMenu a {
+    color: #f34b6e;
+}
+.pt_vmegamenu div.pt_ver_menu .parentMenu {
+    width: 195px;
+}
+.pt_vmegamenu div.pt_ver_menu .parentMenu a, .pt_vmegamenu div.pt_ver_menu .parentMenu span.block-title {
+    display: block;
+    height: 21px;
+    line-height: 17px;
+    padding: 5px 10px 6px;
+    text-decoration: none;
+    width: 175px;
+}
+.pt_vmegamenu div.pt_ver_menu .parentMenu a:hover,
+.pt_vmegamenu div.pt_ver_menu.active .parentMenu a, 
+.pt_vmegamenu div.pt_ver_menu .parentMenu span.block-title:hover {
+    color: #f34b6e;
+}
+.pt_vmegamenu div.pt_ver_menu .parentMenu span.block-title:hover, .pt_vmegamenu div.pt_ver_menu .parentMenu a:hover {
+    
+}
+.pt_vmegamenu div.popup a {
+    display: block;
+    text-decoration: none;
+	font-family: Montserrat;
+}
+.pt_vmegamenu .itemMenu h4.level1, .pt_vmegamenu .itemMenu a.level1 {
+    color: #555555;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.pt_vmegamenu .itemMenu h4.level1, .pt_vmegamenu .itemSubMenu h4.level2 span {
+    color: #897725;
+}
+.pt_vmegamenu .itemSubMenu h4.level2, .pt_vmegamenu .itemSubMenu a.level2, .pt_vmegamenu .itemSubMenu h4.level3, .pt_vmegamenu .itemSubMenu a.level3, .pt_vmegamenu .itemMenu a.level1.nochild {
+    background: url("../images/black-dot.jpg") no-repeat scroll left center rgba(0, 0, 0, 0);
+    color: #555555;
+    font-size: 14px;
+    font-weight: normal;
+    padding-left: 8px;
+    text-transform: none;
+}
+.pt_vmegamenu .itemSubMenu a.level2:hover, .pt_vmegamenu .itemMenu a.level1.nochild:hover {
+    color: #A52A2A;
+}
+
+.pt_vmegamenu div.column {
+    border-right: 3px solid #C2B160;
+    float: left;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+.pt_vmegamenu div.column.last {
+    border-right: 0 none;
+    margin-right: 0;
+    padding-right: 0;
+}
+.pt_vmegamenu div.itemSubMenu {
+    margin-left: 15px;
+}
+.pt_vmegamenu .clearBoth {
+    clear: both;
+}
+.pt_vmegamenu .block2 {
+    margin-top: 10px;
+}
+.pt_vmegamenu #popup_home {
+    display: none !important;
+}
+.pt_vmegamenu div.popup .block1 {
+    overflow: hidden;
+}
+.pt_vmegamenu div.popup .block1 .column {
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+.pt_vmegamenu div.popup .floatleft {
+    float: left;
+}
+.pt_vmegamenu div.popup .blockright img {
+    max-width: 100%;
+}
+.pt_vmegamenu .parentMenu .block-title {
+    color: #1E7EC8;
+}
+.pt_vmegamenu div.pt_ver_menu .parentMenu p {
+    margin: 0;
+    padding: 0;
+}
+.pt_vmegamenu #pt_ver_menu_link .parentMenu ul li {
+    float: none;
+    list-style: none outside none;
+}
+.pt_vmegamenu #pt_ver_menu_link .parentMenu ul li a {
+    display: block;
+    float: none;
+    padding: 5px 10px 6px;
+}
+.pt_vmegamenu #pt_ver_menu_link {
+    padding: 0;
+    width: 195px;
+}
+.pt_vmegamenu .wrap-popup {
+    left: 195px;
+    position: absolute;
+    top: 0;
+    width: 920px;
+}
+.pt_vmegamenu .wrap-popup:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+
+.block1{
+	padding:20px 30px;
+}
+.block1 .column{
+	padding-bottom:0!important; 
+	margin-bottom:0px!important
+}
+.block1 .column .itemMenu > a{
+    color: #666;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+	font-family:inherit;
+    width: 100%;
+    text-decoration: none;
+	font-weight:700;
+	text-transform:capitalize;
+}
+.block1 .column .itemMenu > a:hover {
+	color: #f34b6e;
+}
+.block1 .column .itemMenu > a.actParent{
+	padding: 10px 0 20px;
+    font-weight: 700;
+	border-bottom: 2px solid #4d4d4d;
+}
+.block1 .column .itemMenu .itemSubMenu .itemMenu > a {
+	font-size: 13px;
+	color: #c3c3c3;
+	font-weight: normal;
+	line-height: 30px;
+}
+.block1 .column .itemMenu .itemSubMenu .itemMenu > a:hover {
+	color: #f34b6e;
+}
+.pt_vmegamenu div.column{
+    border:none!important;
+    margin:0 15px 0 0!important;
+    padding:0px!important;
+    float:left;
+}
+.pt_vmegamenu div.column.last{
+    margin-right:0px!important;
+}
+.pt_vmegamenu div.column.blockright{
+    width:150px;
+    text-align: center;
+    margin-right:0!important;
+}
+.popup .block1{
+    float:left;
+}
+.pt_vmegamenu div.itemSubMenu {
+    margin:0 0 20px!important;
+	padding-top: 10px;
+	position:relative;
+}
+@media(max-width: 1199px){
+	.pt_vmegamenu .pt_ver_menu .popup {
+		left: 213px;
+		max-width: 700px;
+	}
+	.pt_vmegamenu .parentMenu a{padding: 14px 20px 12px 45px !important;}
+	.pt_vmegamenu div.column {
+		width: 148px;
+	}
+	.block1 .column .itemMenu > a {
+		font-size: 14px;
+	}
+	.block1 .column .itemMenu .itemSubMenu .itemMenu > a {
+		font-size: 11px;
+	}
+	.vermagemenu h2{font-size:15px;}
+}
