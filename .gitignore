@@ -3,20 +3,12 @@
 # Image File
 
 # Image Cache Files
-/upload/image/cache/*
-!/upload/image/cache/index.html
 
 # System Cache Files
-/upload/system/storage/cache/*
-!/upload/system/storage/cache/index.html
 
 # Modification Files
-/upload/system/storage/modification/*
-!/upload/system/storage/modification/index.html
 
 # Templates Files
-/upload/image/templates/*
-/upload/image/templates/default.jpg
 
 # Download Files
 /upload/system/storage/download/*
